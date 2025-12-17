@@ -53,7 +53,7 @@ export function HeroSection() {
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(98,129,65,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(98,129,65,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10 mt-16 sm:mt-0">
         <div className="max-w-4xl mx-auto text-center">
           {/* Greeting */}
           <motion.div
