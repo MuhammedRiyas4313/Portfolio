@@ -105,7 +105,7 @@ export function HeroSection() {
               { icon: Phone, text: "+91 9544441589", href: "tel:+919544441589" },
               { icon: Mail, text: "muhammedriyasp007@gmail.com", href: "mailto:muhammedriyasp007@gmail.com" },
               { icon: MapPin, text: "Kerala, India", href: "#" },
-              { icon: Linkedin, text: "LinkedIn", href: "https://linkedin.com/in/muhammed-riyas" },
+              { icon: Linkedin, text: "LinkedIn", href: "https://www.linkedin.com/in/muhammed-riyas-938a87256/" },
             ].map((item, index) => (
               <motion.a
                 key={index}
