@@ -1,84 +1,167 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { 
+  Code2, 
+  Database, 
+  Globe, 
+  Layout, 
+  MessageSquare, 
+  Smartphone, 
+  Zap, 
+  Server,
+  Cloud,
+  Terminal,
+} from "lucide-react";
 
-const skillCategories = [
+gsap.registerPlugin(ScrollTrigger);
+
+const skillGroups = [
   {
-    title: "Front-End Development",
-    skills: ["React.js", "Next.js", "Redux", "Redux Toolkit", "TypeScript", "JavaScript", "HTML/CSS", "Tailwind CSS", "Material UI", "Bootstrap", "Sass"],
+    title: "Frontend Mastery",
+    icon: Layout,
+    skills: ["React.js", "Next.js", "Angular", "TypeScript", "Tailwind CSS", "Redux"],
+    accent: "text-blue-500",
   },
   {
-    title: "Back-End Development",
-    skills: ["Node.js", "Express.js", "REST APIs", "GraphQL", "API Integration"],
+    title: "Backend & AI",
+    icon: Server,
+    skills: ["Node.js", "Express.js", "GraphQL", "Python", "WhatsApp API", "NLP"],
+    accent: "text-emerald-500",
   },
   {
-    title: "Mobile Development",
-    skills: ["React Native", "Cross-Platform Apps", "Android", "iOS"],
+    title: "Mobile Solutions",
+    icon: Smartphone,
+    skills: ["React Native", "Expo", "Android/iOS", "App Arch", "Push Notifs"],
+    accent: "text-purple-500",
   },
   {
-    title: "Databases",
-    skills: ["MongoDB", "PostgreSQL", "Mongoose ORM"],
-  },
-  {
-    title: "Cloud & DevOps",
-    skills: ["AWS", "DigitalOcean", "Vercel", "NGINX", "Apache", "CI/CD", "Jenkins"],
-  },
-  {
-    title: "Tools & Methodologies",
-    skills: ["Git", "GitHub", "JIRA", "Zoho", "Scrum", "Jest", "Swagger", "Postman"],
+    title: "Cloud & DevOops",
+    icon: Cloud,
+    skills: ["AWS", "DigitalOcean", "NGINX", "Docker", "Jenkins", "Git"],
+    accent: "text-orange-500",
   },
 ];
 
 export function SkillsSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 1. Animate the main section title
+      gsap.fromTo(".section-title", 
+        { opacity: 0, y: 50, filter: "blur(6px)" },
+        {
+          opacity: 1, y: 0, filter: "blur(0px)",
+          duration: 0.9, 
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".section-title",
+            start: "top 88%",
+            toggleActions: "play none none reverse",
+          }
+        }
+      );
+
+      // 2. Animate the cards
+      const items = gsap.utils.toArray<HTMLElement>(".skill-card");
+      gsap.fromTo(items, 
+        { opacity: 0, scale: 0.9, y: 30 },
+        { 
+          opacity: 1, scale: 1, y: 0, 
+          duration: 0.7, 
+          stagger: 0.1, 
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 75%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section id="skills" className="py-24 md:py-32 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute top-1/3 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/3 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-      
-      <div className="container mx-auto px-6 relative z-10" ref={ref}>
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <span className="text-primary font-medium text-sm uppercase tracking-wider">My Expertise</span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold mt-4">
-            Technical <span className="gradient-text">Skills</span>
-          </h2>
-        </motion.div>
+    <section
+      id="skills"
+      ref={sectionRef}
+      className="py-24 md:py-32 relative overflow-hidden"
+    >
+      {/* Background blobs for depth */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skillCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              className="glass-card-hover p-6 md:p-8"
-            >
-              <h3 className="font-heading text-lg font-semibold mb-5 text-foreground">
-                {category.title}
-              </h3>
+      <div className="container mx-auto px-6 md:pl-24 relative z-10 w-full">
+        {/* Section Header */}
+        <div className="max-w-4xl mb-16 text-left">
+          <span className="inline-block text-primary font-medium text-sm uppercase tracking-[0.2em] mb-4">
+            Technical Arsenal
+          </span>
+          <h2 className="section-title font-heading text-5xl md:text-7xl font-bold tracking-tight mb-8">
+            My <span className="text-primary italic">Skills</span>
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+            A comprehensive toolkit built through 3+ years of architecting scalable applications and solving complex digital challenges.
+          </p>
+        </div>
+
+        {/* Skill grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {skillGroups.map((group) => (
+            <div key={group.title} className="skill-card glass-card-hover p-8 group h-full">
+              <div className={`w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 
+                group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 ${group.accent}`}>
+                <group.icon className="w-6 h-6" />
+              </div>
+              <h3 className="font-heading text-xl font-bold mb-4">{group.title}</h3>
               <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill, skillIndex) => (
-                  <motion.span
+                {group.skills.map((skill) => (
+                  <span
                     key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.4, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
-                    className="px-3 py-1.5 text-sm rounded-lg bg-secondary/80 text-foreground border border-border/50 hover:border-primary/30 hover:bg-primary/10 transition-all duration-300 cursor-default"
+                    className="px-3 py-1 text-xs rounded-full bg-secondary text-muted-foreground border border-border/50 font-medium"
                   >
                     {skill}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
+        </div>
+
+        {/* Extra highlights */}
+        <div className="mt-16 pt-16 border-t border-border/30">
+          <div className="grid md:grid-cols-3 gap-10">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                <Terminal className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="font-bold mb-1">Modern Standards</h4>
+                <p className="text-sm text-muted-foreground">ESNext, Clean Code, Design Patterns, SOLID</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                <Zap className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="font-bold mb-1">Performance</h4>
+                <p className="text-sm text-muted-foreground">SEO, Web Vitals, API Caching, Lazy Loading</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                <MessageSquare className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="font-bold mb-1">Communication</h4>
+                <p className="text-sm text-muted-foreground">Documentation, Agile, Mentoring, Code Reviews</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
