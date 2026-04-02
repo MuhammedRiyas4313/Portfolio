@@ -1,14 +1,14 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { 
-  Code2, 
-  Database, 
-  Globe, 
-  Layout, 
-  MessageSquare, 
-  Smartphone, 
-  Zap, 
+import {
+  Code2,
+  Database,
+  Globe,
+  Layout,
+  MessageSquare,
+  Smartphone,
+  Zap,
   Server,
   Cloud,
   Terminal,
@@ -20,13 +20,13 @@ const skillGroups = [
   {
     title: "Frontend Mastery",
     icon: Layout,
-    skills: ["React.js", "Next.js", "Angular", "TypeScript", "Tailwind CSS", "Redux"],
+    skills: ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Redux-Toolkit"],
     accent: "text-blue-500",
   },
   {
     title: "Backend & AI",
     icon: Server,
-    skills: ["Node.js", "Express.js", "GraphQL", "Python", "WhatsApp API", "NLP"],
+    skills: ["Node.js", "Express.js", "GraphQL", "Python", "WhatsApp API"],
     accent: "text-emerald-500",
   },
   {
@@ -49,11 +49,11 @@ export function SkillsSection() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       // 1. Animate the main section title
-      gsap.fromTo(".section-title", 
+      gsap.fromTo(".section-title",
         { opacity: 0, y: 50, filter: "blur(6px)" },
         {
           opacity: 1, y: 0, filter: "blur(0px)",
-          duration: 0.9, 
+          duration: 0.9,
           ease: "power3.out",
           scrollTrigger: {
             trigger: ".section-title",
@@ -65,12 +65,12 @@ export function SkillsSection() {
 
       // 2. Animate the cards
       const items = gsap.utils.toArray<HTMLElement>(".skill-card");
-      gsap.fromTo(items, 
+      gsap.fromTo(items,
         { opacity: 0, scale: 0.9, y: 30 },
-        { 
-          opacity: 1, scale: 1, y: 0, 
-          duration: 0.7, 
-          stagger: 0.1, 
+        {
+          opacity: 1, scale: 1, y: 0,
+          duration: 0.7,
+          stagger: 0.1,
           ease: "power2.out",
           scrollTrigger: {
             trigger: sectionRef.current,

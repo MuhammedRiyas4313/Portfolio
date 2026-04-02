@@ -23,7 +23,7 @@ const experiences = [
       "Optimized webhook response times to under 100ms via smart DB queries and caching strategies",
       "Collaborated with AI/ML team to integrate NLP for enhanced chatbot intelligence",
     ],
-    tags: ["WhatsApp API", "Angular", "Node.js", "AI/ML", "Meta"],
+    tags: ["React.js", "Next.js", "Express.js", "MongoDb", "Node.js",],
     accent: "from-primary/20 to-primary/5",
   },
   {
@@ -58,11 +58,11 @@ const experiences = [
       "Built cross-platform React Native apps ensuring seamless performance on Android & iOS",
       "Optimized frontend via code-splitting, lazy loading, memoization with Redux & React Context",
       "Integrated payment gateways, auth services & third-party APIs for seamless data exchange",
-      "Collaborated in Agile Scrum teams, managing tasks via Zoho Projects and JIRA",
+      "Collaborated in Agile Scrum teams, managing tasks via Zoho Projects",
       "Implemented Jest testing framework achieving 80%+ code coverage, reducing production bugs by 50%",
       "Delivered diverse solutions: e-commerce, health/fitness systems, social networks & CMS applications",
     ],
-    tags: ["Next.js", "React Native", "Redux", "Jest", "JIRA"],
+    tags: ["Next.js", "React Native", "Redux", "Jest"],
     accent: "from-purple-500/15 to-purple-500/5",
   },
   {
