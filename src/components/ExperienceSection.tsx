@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Briefcase, Calendar, MapPin, ExternalLink } from "lucide-react";
+import { Briefcase, Calendar, MapPin } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -66,12 +66,12 @@ const experiences = [
     accent: "from-purple-500/15 to-purple-500/5",
   },
   {
-    title: "MERN Stack Developer (Intern)",
+    title: "Junior MERN Stack Developer",
     company: "Brototype",
     companyFull: "Brototype",
     location: "Kozhikode, Kerala",
     period: "Sep 2022 – Sep 2023",
-    type: "Internship",
+    type: "Full-time",
     description: [
       "Built front-end apps using React.js, HTML, CSS, JavaScript, Bootstrap & Tailwind CSS",
       "Developed back-end services with Node.js & Express.js for RESTful API development",
