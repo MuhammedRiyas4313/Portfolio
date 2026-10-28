@@ -7,9 +7,30 @@ gsap.registerPlugin(ScrollTrigger);
 
 const experiences = [
   {
+    title: "Senior Developer",
+    company: "Digitide Solutions Ltd",
+    companyFull: "Digitide Solutions Ltd",
+    location: "Bengaluru, Karnataka",
+    period: "May 2026 – Present",
+    type: "Current",
+    description: [
+      "Working on an Insurance Claim Automation System, building the web application and backend services that automate insurance claim workflows",
+      "Develop and maintain frontend interfaces using React.js",
+      "Design and build backend APIs using Node.js and Express.js",
+      "Implement workflow automation using jBPM to model and run business processes",
+      "Integrate backend services with SQL and MongoDB databases",
+      "Deploy and manage the application on Contabo-hosted infrastructure",
+      "Debug and resolve issues across the frontend, backend, and workflow layers",
+      "Use Claude for AI-assisted development, including code generation and debugging support",
+      "Track tasks and collaborate with the team using Jira",
+    ],
+    tags: ["React.js", "Node.js", "Express.js", "jBPM", "MongoDB", "SQL", "Jira"],
+    accent: "from-emerald-500/20 to-emerald-500/5",
+  },
+  {
     title: "Full Stack Developer",
-    company: "Kiksy.ai",
-    companyFull: "Kiksy.ai (AI-Powered Technology Solutions)",
+    company: "Kiksar Technologies",
+    companyFull: "Kiksar Technologies",
     location: "Bengaluru, Karnataka",
     period: "Aug 2025 – Apr 2026",
     type: "Full-time",
@@ -182,9 +203,19 @@ export function ExperienceSection() {
                           <span>{exp.company}</span>
                         </div>
                       </div>
-                      <span className="text-xs px-2.5 py-1 rounded-full border border-primary/30 text-primary bg-primary/10 font-medium">
-                        {exp.type}
-                      </span>
+                      {exp.type === "Current" ? (
+                        <span className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full border border-emerald-500/40 text-emerald-400 bg-emerald-500/10 font-medium">
+                          <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                          </span>
+                          Current
+                        </span>
+                      ) : (
+                        <span className="text-xs px-2.5 py-1 rounded-full border border-primary/30 text-primary bg-primary/10 font-medium">
+                          {exp.type}
+                        </span>
+                      )}
                     </div>
                     <div className="flex items-center gap-4 mt-2.5 text-xs text-muted-foreground flex-wrap">
                       <span className="flex items-center gap-1">
